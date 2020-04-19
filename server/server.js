@@ -1,9 +1,19 @@
-const { express, colors, cors } = require('./helpers/dependencies');
+const { express, colors, cors, mongoose } = require('./helpers/dependencies');
 
 require('./config/base');
 
 // Server
 const app = express();
+
+// Coneccion a base de datos
+mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, err => {
+    if (err) {
+        console.log(`${'ERROR'.red}: No se a podido conectar a base de datos ${process.env.DB.red}`);
+        console.log(err);
+    } else {
+        console.log(`${'SUCCESS'.green}: Coneccion con base de datos establecida`);
+    }
+});
 
 // seguridad de cors
 app.use(cors());

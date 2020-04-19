@@ -2,7 +2,7 @@ const { express } = require('../helpers/dependencies');
 
 const app = express();
 
-// Registrar usuario
+// Ruta para usuarios
 app.use(require('./usuario'));
 // iniciar sesion
 app.use(require('./login'));
